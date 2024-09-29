@@ -1,33 +1,36 @@
+# Medusa on Kubernetes
 
-# Medusa on Kubernetes with Helm Charts
+This project demonstrates the deployment of Medusa, an open-source headless commerce engine, on a Kubernetes cluster using Helm charts. The setup includes two separate containers for the **Medusa** server and **PostgreSQL** database, both running as independent services but configured to work together.
 
-This repository contains Helm charts for deploying a Medusa server along with a PostgreSQL database on a Kubernetes cluster.
+## Project Structure
+
+- **medusa-container**: This container runs the Medusa server.
+- **postgres-container**: This container runs PostgreSQL, which is required for Medusa's database operations.
+
+Both containers are managed separately in Kubernetes, allowing for independent scaling and configuration.
+
+### Key Components:
+
+- **Helm Charts**: Used to manage both the Medusa and PostgreSQL deployments, including service discovery, persistent volumes, and container lifecycle management.
+- **NodePort Services**: Configured to expose both containers via NodePort for external access.
+- **Persistent Volumes**: Ensures that PostgreSQL data is persisted across container restarts.
 
 ## Prerequisites
 
-Before using these Helm charts, ensure that you have the following tools installed and configured:
+Before running the Medusa and Postgres containers on Kubernetes, ensure you have:
 
-- [Helm](https://helm.sh/docs/intro/install/) (version 3+)
-- [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) configured to access your Kubernetes cluster
+- A Kubernetes cluster running (e.g., local Kind cluster or cloud-based Kubernetes service).
+- Helm installed and configured in your environment.
+- Docker images for Medusa and Postgres available (pulled from Docker Hub or built locally).
 
-## Deployment Overview
+## Deployment
 
-The Helm chart in this repository provides the setup for running Medusa, a headless commerce platform, alongside a PostgreSQL database.
+### Steps to Deploy
 
-### What's Included
-
-- **Medusa Server**: The Medusa server runs on port `9000`.
-- **PostgreSQL**: A PostgreSQL container for managing Medusa's database needs.
-
-## Getting Started
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/reviewraj/medusa-on-kubernets.git
-cd medusa-on-kubernets
-```
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/reviewraj/medusa-on-kubernets.git
+   cd medusa-on-kubernets
 
 ### 2. Install the Helm Chart
 
